@@ -1,0 +1,22 @@
+<div class="app-container">
+  <h1>{{ title }}</h1>
+
+  <!-- Input and Add Button -->
+  <div class="input-container">
+    <input [(ngModel)]="newTodoTitle" placeholder="Enter new Task" />
+    <button (click)="addTodo()">Add</button>
+  </div>
+
+  <!-- Todo List -->
+  <div *ngIf="todos.length === 0">
+    <p>No Task available!</p>
+  </div>
+
+  <ul *ngIf="todos.length > 0">
+    <li *ngFor="let todo of todos">
+      <input type="checkbox" [(ngModel)]="todo.completed" />
+      <span [ngClass]="{'completed': todo.completed}">{{ todo.title }}</span>
+      <button (click)="deleteTodo(todo.id)">Delete</button>
+    </li>
+  </ul>
+</div>
